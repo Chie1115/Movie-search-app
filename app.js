@@ -1,4 +1,5 @@
-const apiKey = "7dfbc4ab";
+//const apiKey = "7dfbc4ab";
+const apiKey = 'ac5b9b92';  // Insert your OMDb API key here
 const baseUrl = "https://www.omdbapi.com/";
 const elements = {
     errorMessage: document.getElementById("error-message"),
@@ -18,8 +19,8 @@ const cache = new Map();
 const MAX_RESULTS = 10;
 
 const toggleError = (message = '') => {
-    elements.errorText.textContent = message;
     elements.errorMessage.classList.toggle("hidden", !message);
+    elements.errorText.textContent = message;
 };
 
 const fetchData = async (url) => {
@@ -27,6 +28,7 @@ const fetchData = async (url) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data); // データをコンソールに表示して確認する
         if (!response.ok || data.Response === "False") throw new Error(data.Error || "No data found");
         cache.set(url, data);
         return data;
@@ -88,19 +90,13 @@ const toggleFavorite = (event, movie, favoriteButton) => {
     displayFavoriteMovies();
     updateFavoriteButtons();
 };
-
 const fetchMoviesByGenre = async (genre) => {
-    const data = await fetchData(`${baseUrl}?apikey=${apiKey}&s=&type=movie`);
+    const data = await fetchData(`${baseUrl}?apikey=${apiKey}&s=${genre}`);
     if (data?.Response === "True") {
-        const filteredMovies = await Promise.all(data.Search.map(async (movie) => {
-            const movieDetails = await fetchData(`${baseUrl}?apikey=${apiKey}&i=${movie.imdbID}`);
-            return movieDetails?.Genre.includes(genre) ? movie : null;
-        }));
-        return filteredMovies.filter(Boolean).slice(0, MAX_RESULTS);
+        return data.Search.slice(0, MAX_RESULTS);
     }
     return [];
 };
-
 elements.genreButton.addEventListener("click", async () => {
     const selectedGenre = elements.genreSelect.value;
     if (selectedGenre) {
@@ -112,8 +108,8 @@ elements.genreButton.addEventListener("click", async () => {
 });
 
 const displayMovies = (movies) => {
-    toggleError();
-    elements.resultsContainer.innerHTML = '';
+    toggleError();  // エラーメッセージを非表示
+    elements.resultsContainer.innerHTML = '';  // 結果コンテナを空に
     movies.forEach(movie => {
         const movieCard = createMovieCard(movie);
         movieCard.addEventListener("click", () => showMovieDetails(movie.imdbID));
@@ -188,11 +184,15 @@ const updateFavoriteButtons = () => {
     document.querySelectorAll(".movie-card").forEach(card => {
         const movieId = card.dataset.id;
         const favoriteButton = card.querySelector(".favorite-button");
-        const isFavorite = getFavoriteMovies().some(favMovie => favMovie.id === movieId);
-        favoriteButton.textContent = isFavorite ? "Added" : "Add to Favorites";
-        favoriteButton.style.backgroundColor = isFavorite ? "#ff9900" : "#ffcc00";
+        
+        if (favoriteButton) { // favoriteButtonが存在する場合にのみ操作する
+            const isFavorite = getFavoriteMovies().some(favMovie => favMovie.id === movieId);
+            favoriteButton.textContent = isFavorite ? "Added" : "Add to Favorites";
+            favoriteButton.style.backgroundColor = isFavorite ? "#ff9900" : "#ffcc00";
+        }
     });
 };
+
 
 const init = async () => {
     const defaultMovies = await fetchDefaultMovies();
