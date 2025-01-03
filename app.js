@@ -31,7 +31,7 @@ const fetchData = async (url) => {
         cache.set(url, data);
         return data;
     } catch (error) {
-        toggleError(error.message);
+        toggleError(`${error.message}. Please try again.`);
         return null;
     }
 };
@@ -55,24 +55,27 @@ const createMovieCard = (movie) => {
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie-card");
     movieCard.dataset.id = movie.imdbID;
-    const favoriteButton = createFavoriteButton(movie);
-    movieCard.innerHTML = `
-        <img src="${movie.Poster !== "N/A" ? movie.Poster : "placeholder.jpg"}" alt="Poster of ${movie.Title}" />
-        <h3>${movie.Title}</h3>
-        <p>Year: ${movie.Year}</p>
-    `;
-    movieCard.appendChild(favoriteButton);
-    return movieCard;
-};
 
-const createFavoriteButton = (movie) => {
+    // お気に入りボタンの作成
     const isFavorite = getFavoriteMovies().some(favMovie => favMovie.id === movie.imdbID);
     const favoriteButton = document.createElement("button");
     favoriteButton.classList.add("favorite-button");
     favoriteButton.textContent = isFavorite ? "Added" : "Add to Favorites";
     favoriteButton.style.backgroundColor = isFavorite ? "#ff9900" : "#ffcc00";
     favoriteButton.addEventListener("click", (event) => toggleFavorite(event, movie, favoriteButton));
-    return favoriteButton;
+
+    // 映画カードの内容
+    movieCard.innerHTML = `
+        <img src="${movie.Poster !== "N/A" ? movie.Poster : "placeholder.jpg"}" alt="Poster of ${movie.Title}" />
+        <h3>${movie.Title}</h3>
+        <p>Year: ${movie.Year}</p>
+        <p>Genre: ${movie.Genre || 'N/A'}</p>
+        <p>IMDB Rating: ${movie.imdbRating || 'N/A'}</p>
+    `;
+    
+    // お気に入りボタンを追加
+    movieCard.appendChild(favoriteButton);
+    return movieCard;
 };
 
 const toggleFavorite = (event, movie, favoriteButton) => {
