@@ -1,5 +1,5 @@
-//const apiKey = "7dfbc4ab";
-const apiKey = 'ac5b9b92';  // Insert your OMDb API key here
+const apiKey = "7dfbc4ab";
+//const apiKey = 'ac5b9b92';  // Insert your OMDb API key here
 const baseUrl = "https://www.omdbapi.com/";
 const elements = {
     errorMessage: document.getElementById("error-message"),
@@ -28,7 +28,6 @@ const fetchData = async (url) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data); // データをコンソールに表示して確認する
         if (!response.ok || data.Response === "False") throw new Error(data.Error || "No data found");
         cache.set(url, data);
         return data;
