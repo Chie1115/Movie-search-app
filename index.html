@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>🎥 Movie Search App</h1>
+    </header>
+    <main>
+
+        <!-- Movie Search by Text -->
+        <section class="search-bar">
+            <input type="text" id="movie-input" placeholder="Search for a movie...">
+            <button id="search-button">Search</button>
+        </section>
+
+        <!-- Genre Search Section -->
+        <section class="genre-search">
+            <label for="genre-select">Select Genre:</label>
+            <select id="genre-select">
+                <option value="">--Select a Genre--</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Animation">Animation</option>
+                <option value="Documentary">Documentary</option>
+            </select>
+            <button id="genre-button" type="button">Search by Genre</button>
+        </section>
+
+        <!-- Error Message -->
+        <section id="error-message" class="hidden">
+            <p id="error-text"></p>
+        </section>
+
+        <!-- Movie Search Results -->
+        <section id="results-container">
+            <!-- Movie results will be dynamically added here -->
+        </section>
+
+        <!-- Movie Details Modal -->
+        <section id="movie-details" class="hidden">
+            <button id="close-details">×</button>
+            <div id="details-content">
+                <!-- Content dynamically added via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites-container">
+            <h2>Your Favorites</h2>
+            <div id="favorites-list">
+                <!-- Favorite movies will be displayed here -->
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2024 Movie Search App. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
