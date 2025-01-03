@@ -47,9 +47,20 @@ const fetchMovies = async (query) => {
 };
 
 const fetchDefaultMovies = async () => {
-    const defaultMovies = ["Holiday", "Avatar", "Inception", "Interstellar", "Titanic"];
-    const movieResponses = await Promise.all(defaultMovies.map(fetchMovies));
-    return movieResponses.flat().slice(0, MAX_RESULTS);
+    const defaultMovies = ["Avatar", "Inception", "Interstellar", "Titanic", "The Dark Knight", "Gladiator", "The Matrix", "The Godfather", "Pulp Fiction", "The Shawshank Redemption"];
+    const moviePromises = defaultMovies.map(async (movie) => {
+        const data = await fetchData(`${baseUrl}?apikey=${apiKey}&t=${movie}`);
+        if (!data || data.Response === "False") {
+            console.error(`Failed to fetch movie: ${movie}`);
+            return null; // データ取得に失敗した場合
+        }
+        return data; // 正常にデータが返された場合
+    });
+
+    const movieResults = await Promise.all(moviePromises);
+    const validMovies = movieResults.filter(result => result !== null); // null の映画データを除外
+    console.log("Valid Movies: ", validMovies); // コンソールに有効な映画データを表示
+    return validMovies.slice(0, MAX_RESULTS); // 最大件数まで表示
 };
 
 const createMovieCard = (movie) => {
@@ -70,8 +81,6 @@ const createMovieCard = (movie) => {
         <img src="${movie.Poster !== "N/A" ? movie.Poster : "placeholder.jpg"}" alt="Poster of ${movie.Title}" />
         <h3>${movie.Title}</h3>
         <p>Year: ${movie.Year}</p>
-        <p>Genre: ${movie.Genre || 'N/A'}</p>
-        <p>IMDB Rating: ${movie.imdbRating || 'N/A'}</p>
     `;
     
     // お気に入りボタンを追加
@@ -168,7 +177,7 @@ const displayFavoriteMovies = () => {
     });
 };
 
-const saveAsFavorite = (id, title, poster) => updateFavoriteMovies(id, title, poster, 'add');
+
 const removeFromFavorite = (id) => updateFavoriteMovies(id, null, null, 'remove');
 
 const updateFavoriteMovies = (id, title, poster, action) => {
