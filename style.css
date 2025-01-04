@@ -259,3 +259,31 @@ main {
 .remove-favorite-button:hover {
     background-color: #ff3333;
 }
+
+/* 共通スタイル */
+#results-container {
+    display: grid;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* iPhone 16用: 1列 (幅が767px以下の場合) */
+@media (max-width: 767px) {
+    #results-container {
+        grid-template-columns: 1fr; /* 1列 */
+    }
+}
+
+/* iPad Pro 11用: 3列 (幅が768px〜1199pxの場合) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    #results-container {
+        grid-template-columns: repeat(3, 1fr); /* 3列 */
+    }
+}
+
+/* デスクトップ用: 5列 (幅が1200px以上の場合) */
+@media (min-width: 1200px) {
+    #results-container {
+        grid-template-columns: repeat(5, 1fr); /* 5列 */
+    }
+}
