@@ -31,9 +31,27 @@ const fetchData = async (url) => {
     if (cache.has(url)) return cache.get(url); // Return cached data if available
     try {
         const response = await fetch(url);
+        
+        // Check for HTTP status errors
+        if (!response.ok) {
+            switch (response.status) {
+                case 404:
+                    throw new Error("404: Movie not found");
+                case 401:
+                    throw new Error("401: API key error");
+                case 500:
+                    throw new Error("500: Internal server error");
+                case 429:
+                    throw new Error("429: Too many requests, please try again later");
+                default:
+                    throw new Error(`Unexpected error: ${response.status} ${response.statusText}`);
+            }
+        }
+        
         const data = await response.json();
-        if (!response.ok || data.Response === "False") throw new Error(data.Error || "No data found");
-        cache.set(url, data); // Cache the data for future use
+
+        if (data.Response === "False") throw new Error(data.Error || "No data found");
+        cache.set(url, data);
         return data;
     } catch (error) {
         toggleError(`${error.message}. Please try again.`);

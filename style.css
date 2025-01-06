@@ -137,22 +137,22 @@ main {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none; /* 背景を削除 */
-    color: #e74c3c; /* 赤色に変更 */
+    background: none; /* Remove background */
+    color: #e74c3c; /* Red color */
     border: none;
-    font-size: 24px; /* バツ印を大きく表示 */
+    font-size: 24px; /* Larger X */
     cursor: pointer;
-    z-index: 1010; /* 映画詳細の上に表示 */
+    z-index: 1010; /* Display above movie details */
     line-height: 0;
 }
 
 #close-details:hover {
-    color: #c0392b; /* ホバー時に色を濃くする */
+    color: #c0392b; /* Darker red on hover */
 }
 
 /* Optional: Add a hover effect to make it feel clickable */
 #close-details:hover {
-    transform: scale(1.1); /* 少し大きくしてクリック可能に見せる */
+    transform: scale(1.1); /* Slightly enlarge to indicate clickability */
 }
 
 /* Compact content styling */
@@ -260,30 +260,30 @@ main {
     background-color: #ff3333;
 }
 
-/* 共通スタイル */
+/* Common Styles */
 #results-container {
     display: grid;
     gap: 1.5rem;
     justify-content: center;
 }
 
-/* iPhone 16用: 1列 (幅が767px以下の場合) */
+/* For iPhone 16: 1 column (for widths 767px or less) */
 @media (max-width: 767px) {
     #results-container {
-        grid-template-columns: 1fr; /* 1列 */
+        grid-template-columns: 1fr; /* 1 column */
     }
 }
 
-/* iPad Pro 11用: 3列 (幅が768px〜1199pxの場合) */
+/* For iPad Pro 11: 3 columns (for widths between 768px and 1199px) */
 @media (min-width: 768px) and (max-width: 1199px) {
     #results-container {
-        grid-template-columns: repeat(3, 1fr); /* 3列 */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
     }
 }
 
-/* デスクトップ用: 5列 (幅が1200px以上の場合) */
+/* For Desktop: 5 columns (for widths 1200px or more) */
 @media (min-width: 1200px) {
     #results-container {
-        grid-template-columns: repeat(5, 1fr); /* 5列 */
+        grid-template-columns: repeat(5, 1fr); /* 5 columns */
     }
 }
