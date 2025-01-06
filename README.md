@@ -1,47 +1,66 @@
 # Movie-search-app
-Examination: Individuellt Projekt: “FilmSamlaren”
+Examination: Individual Project: “FilmSamlaren”
+Brief Description
+FilmSamlaren is a movie app where users can search for movies, view details about movies, filter movies by genre, and save their favorite movies. All movie data is fetched from the OMDb API, and the app provides a user-friendly and responsive design.
 
-README.md:
-Kortfattad beskrivning av projektet och hur man kör igång det lokalt.
+Link to Figma Sketch
+https://www.figma.com/design/9NXxo86Y0NkjLaipsaYyid/Examination-FilmSamlaren?node-id=9-2&t=O5lGbTEf9W6Igwlf-0
 
-Länk till din Figma-skiss:
- https://www.figma.com/design/9NXxo86Y0NkjLaipsaYyid/Examination-FilmSamlaren?node-id=0-1&p=f&t=9Bo4P2lZK6Ekal18-0
+How to Run Locally
 
-Kortfattad förklaring av hur du uppfyllt JSON-, HTTP/HTTPS-, asynkronitets- och UX/UI-kraven.
+1. Clone this repository:
+2. Open the project in Visual Studio Code.
+3. Start the server with live server:
+ - Right-click on `index.html` and choose `Open with Live Server`.
 
-JSON: Applikationen använder JSON-formatet för att hämta och visa filmdata från OMDb API.
+How to Navigate/Use the Application
 
-HTTP/HTTPS: Applikationen gör HTTP-förfrågningar till OMDb API via HTTPS.
+1. Search for Movies:
+   - Use the search field to type a movie title and click the search button to display search results.
 
-Asynkronitet: Applikationen använder async/await för att hantera asynkrona HTTP-förfrågningar och uppdatera användargränssnittet dynamiskt utan att ladda om sidan.
+2. View Movie Details:
+   - Click on a movie from the search results to view details about the movie, such as genre, director, actors, and a brief summary of the plot.
 
-UX/UI: Användargränssnittet är responsivt och lättanvänt med funktioner som sökfält, genrefilter och en favoritlista. 
-Jag har följt UX/UI-principer för att säkerställa en enkel och intuitiv användarupplevelse.
+3. Filter Movies by Genre:
+   - Choose a genre from the dropdown menu and click the filter button to display movies within the selected genre.
 
+4. Add to Favorites:
+   - Click the favorite button to add a movie to your favorites list.
 
-Beskriv hur du hämtar data från API:et (Vilket API? URL/enpoint, parametrar, API nyckel?).
-Hämtning av data från API:et
-API: OMDb API (The Open Movie Database)
-API URL/enpoint: https://www.omdbapi.com/
+5. View Favorites:
+   - Click on the favorites list to view all the movies you have saved as favorites.
 
-Parametrar:
-apikey=<API_KEY>: Din API-nyckel.
-s=<query>: Filmnamnet för att söka efter filmer.
-i=<imdbID>: IMDb ID för att hämta detaljer om en specifik film.
-API-nyckel: Jag använder en API-nyckel som jag fått från OMDb API. Nyckeln bör hållas hemlig och kan sättas i en miljöfil eller direkt i koden.
+6. Remove from Favorites:
+   - Click the "Remove from Favorites" button to remove a movie from your favorites list.
 
+Requirements Fulfillment
 
-Hur man navigerar/använder applikationen.
-1.Sök efter filmer: Använd sökfältet för att skriva in ett filmtitel och tryck på sökknappen för att visa sökresultat.
+JSON
 
-2.Visa filmens detaljer: Klicka på en film från sökresultaten för att visa detaljer om filmen, såsom genre, regissör, skådespelare och en sammanfattning av handlingen.
+The application uses the JSON format to fetch and display movie data from the OMDb API. JSON responses are used to show movies, their details, and other attributes like ratings, actors, and director.
 
-3.Filtrera filmer efter genre: Välj en genre från rullgardinsmenyn och klicka på filterknappen för att visa filmer inom den valda genren.
+HTTP/HTTPS
 
-4.Lägg till i favoriter: Klicka på favoritknappen för att lägga till en film till favoritlistan.
+The application makes HTTP requests to the OMDb API via HTTPS to fetch movie data. Data is fetched based on search parameters such as movie title and IMDb ID.
 
-5.Visa favoriter: Klicka på favoritlistan för att visa alla filmer som du har sparat som favoriter.
+Asynchrony
 
-6.Ta bort från favoriter: Klicka på "Ta bort från favoriter"-knappen för att ta bort en film från favoritlistan.
+The application uses `async/await` to handle asynchronous HTTP requests. This allows the user interface to update dynamically without reloading the page, providing a smoother user experience.
 
+UX/UI and WCAG
+
+The user interface is responsive and easy to use. Features like the search field, genre filter, and favorites list make the app intuitive. I have implemented color contrasts and semantic HTML elements to follow WCAG guidelines, ensuring good accessibility for all users.
+
+API Information
+
+- API: [OMDb API (The Open Movie Database)](https://www.omdbapi.com/)
+- API Key: `ac5b9b92`
+- API URL/endpoint: 
+- For searching movies: `https://www.omdbapi.com/?s=<query>&apikey=<API-Key>`
+- For fetching details of a specific movie: `https://www.omdbapi.com/?i=<imdbID>&apikey=<API-Key>`
+
+Parameters
+
+- s=<query>: The movie title to search for movies.
+- i=<imdbID>: The IMDb ID to fetch details about a specific movie.
 
