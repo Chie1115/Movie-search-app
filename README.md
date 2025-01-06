@@ -5,7 +5,7 @@ README.md:
 Kortfattad beskrivning av projektet och hur man kör igång det lokalt.
 
 Länk till din Figma-skiss:
- https://www.figma.com/design/9NXxo86Y0NkjLaipsaYyid/Examination-FilmSamlaren?node-id=0-1&p=f&t=9Bo4P2lZK6Ekal18-0
+https://www.figma.com/design/9NXxo86Y0NkjLaipsaYyid/Examination-FilmSamlaren?node-id=0-1&p=f&t=O5lGbTEf9W6Igwlf-0
 
 Kortfattad förklaring av hur du uppfyllt JSON-, HTTP/HTTPS-, asynkronitets- och UX/UI-kraven.
 
@@ -25,10 +25,10 @@ API: OMDb API (The Open Movie Database)
 API URL/enpoint: https://www.omdbapi.com/
 
 Parametrar:
-apikey=<API_KEY>: Din API-nyckel.
 s=<query>: Filmnamnet för att söka efter filmer.
 i=<imdbID>: IMDb ID för att hämta detaljer om en specifik film.
-API-nyckel: Jag använder en API-nyckel som jag fått från OMDb API. Nyckeln bör hållas hemlig och kan sättas i en miljöfil eller direkt i koden.
+
+API-nyckel: Jag använder en API-nyckel som jag fått från OMDb API. "ac5b9b92"
 
 
 Hur man navigerar/använder applikationen.
