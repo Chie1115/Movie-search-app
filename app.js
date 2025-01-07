@@ -177,6 +177,8 @@ const toggleFavorite = (event, movie, favoriteButton) => {
     updateFavoriteMovies(movie.imdbID, movie.Title, movie.Poster, action);
     favoriteButton.textContent = isFavorite ? "Add to Favorites" : "Added";
     favoriteButton.style.backgroundColor = isFavorite ? "#ffcc00" : "#ff9900";
+    // Update aria-label for accessibility
+    favoriteButton.setAttribute("aria-label", isFavorite ? "Add to favorites" : "Remove from favorites");
     displayFavoriteMovies();
 };
 

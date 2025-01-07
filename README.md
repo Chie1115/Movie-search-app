@@ -44,23 +44,30 @@ HTTP/HTTPS
 The application makes HTTP requests to the OMDb API via HTTPS to fetch movie data. Data is fetched based on search parameters such as movie title and IMDb ID.
 
 Asynchrony
-
 The application uses `async/await` to handle asynchronous HTTP requests. This allows the user interface to update dynamically without reloading the page, providing a smoother user experience.
 
 UX/UI and WCAG
-
 The user interface is responsive and easy to use. Features like the search field, genre filter, and favorites list make the app intuitive. I have implemented color contrasts and semantic HTML elements to follow WCAG guidelines, ensuring good accessibility for all users.
 
 API Information
+This application uses the OMDb API (Open Movie Database API) to fetch movie data. OMDb API provides information about movies, such as title, year, genre, director, actors, ratings, and plot.
 
-- API: [OMDb API (The Open Movie Database)](https://www.omdbapi.com/)
-- API Key: `ac5b9b92`
-- API URL/endpoint: 
-- For searching movies: `https://www.omdbapi.com/?s=<query>&apikey=<API-Key>`
-- For fetching details of a specific movie: `https://www.omdbapi.com/?i=<imdbID>&apikey=<API-Key>`
+To search for movies: https://www.omdbapi.com/?s=<query>&apikey=<API-Key>
+To fetch detailed information of a specific movie: https://www.omdbapi.com/?i=<imdbID>&apikey=<API-Key>
 
-Parameters
+Parameters:
+-s=<query>: A parameter specifying the movie title. Used when searching for movies.
+-i=<imdbID>: A parameter specifying the IMDb ID of a movie. Used when fetching detailed information of a specific movie.
+-apikey=<API-Key>: The API key (authentication key). Required to access the OMDb API.
+-API Key: ac5b9b92
 
-- s=<query>: The movie title to search for movies.
-- i=<imdbID>: The IMDb ID to fetch details about a specific movie.
+How to Fetch Data from the API
+Search for Movies:
+The user enters a movie title, which is passed as a query to the OMDb API search endpoint.
+
+Fetch Movie Details:
+To get details of a specific movie, the IMDb ID (imdbID) is used.
+
+Error Handling for HTTP Requests:
+If the response is not successful or the movie is not found, an error message is displayed. Errors are handled based on HTTP status codes 
 
