@@ -15,7 +15,7 @@
         <!-- Movie Search by Text -->
         <section class="search-bar">
             <input type="text" id="movie-input" placeholder="Search for a movie...">
-            <button id="search-button">Search</button>
+            <button id="search-button" aria-label="Search for movies">Search</button>
         </section>
 
         <!-- Genre Search Section -->
@@ -34,7 +34,8 @@
                 <option value="Animation">Animation</option>
                 <option value="Documentary">Documentary</option>
             </select>
-            <button id="genre-button" type="button">Search by Genre</button>
+            <button id="genre-button" type="button" aria-label="Search by genre">Search by Genre</button>
+
         </section>
 
         <!-- Error Message -->
@@ -49,7 +50,8 @@
 
         <!-- Movie Details Modal -->
         <section id="movie-details" class="hidden">
-            <button id="close-details">×</button>
+            <button id="close-details" aria-label="Close movie details">×</button>
+
             <div id="details-content">
                 <!-- Content dynamically added via JavaScript -->
             </div>
@@ -65,7 +67,7 @@
     </main>
     
     <footer class="footer">
-        <p>&copy; 2024 Movie Search App. All rights reserved.</p>
+        <p>&copy; 2024 Hemmakväll. All rights reserved.</p>
     </footer>
 
     <script src="app.js"></script>

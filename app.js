@@ -1,4 +1,4 @@
-const apiKey = "7dfbc4ab";
+const apiKey = "ac5b9b92";
 const baseUrl = "https://www.omdbapi.com/";
 const MAX_RESULTS = 10;
 
@@ -172,7 +172,6 @@ const updateFavoriteMovies = (id, title, poster, action) => {
     }
     if (action === 'remove' && index !== -1) {
         favorites.splice(index, 1);
-        // 対応するボタンの状態を更新
         const favoriteButton = document.querySelector(`.movie-card[data-id="${id}"] .favorite-button`);
         if (favoriteButton) {
             favoriteButton.textContent = "Add to Favorites";
