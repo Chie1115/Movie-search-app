@@ -1,7 +1,7 @@
 // API Key and Base URL for OMDB API
 const apiKey = "ac5b9b92";
 const baseUrl = "https://www.omdbapi.com/";
-const MAX_RESULTS = 10; // Maximum number of results to display
+const MAX_RESULTS = 10;
 
 const elements = {
     errorMessage: document.getElementById("error-message"),
@@ -89,7 +89,6 @@ const createMovieCard = (movie) => {
     movieCard.classList.add("movie-card");
     movieCard.dataset.id = movie.imdbID;
 
-    // Add favorite button functionality
     const favoriteButton = document.createElement("button");
     const isFavorite = getFavoriteMovies().some(fav => fav.id === movie.imdbID);
     favoriteButton.classList.add("favorite-button");
@@ -109,13 +108,17 @@ const createMovieCard = (movie) => {
 
 // Displays movies in the results container
 const displayMovies = (movies) => {
-    toggleError();
+    toggleError(); 
     elements.resultsContainer.innerHTML = '';
-    movies.forEach(movie => {
-        const movieCard = createMovieCard(movie);
-        movieCard.addEventListener("click", () => showMovieDetails(movie.imdbID));
-        elements.resultsContainer.appendChild(movieCard);
-    });
+    if (movies.length === 0) {
+        toggleError("No movies found. Please try a different search.");
+    } else {
+        movies.forEach(movie => {
+            const movieCard = createMovieCard(movie);
+            movieCard.addEventListener("click", () => showMovieDetails(movie.imdbID));
+            elements.resultsContainer.appendChild(movieCard);
+        });
+    }
 };
 
 // Fetches and displays movie details
@@ -175,6 +178,8 @@ const toggleFavorite = (event, movie, favoriteButton) => {
     updateFavoriteMovies(movie.imdbID, movie.Title, movie.Poster, action);
     favoriteButton.textContent = isFavorite ? "Add to Favorites" : "Added";
     favoriteButton.style.backgroundColor = isFavorite ? "#ffcc00" : "#ff9900";
+    // Update aria-label for accessibility
+    favoriteButton.setAttribute("aria-label", isFavorite ? "Add to favorites" : "Remove from favorites");
     displayFavoriteMovies();
 };
 
