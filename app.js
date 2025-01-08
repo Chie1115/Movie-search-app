@@ -127,7 +127,7 @@ const showMovieDetails = async (imdbID) => {
     if (movieDetails) {
         elements.detailsContent.innerHTML = `
             <h2>${movieDetails.Title} (${movieDetails.Year})</h2>
-            <img src="${movieDetails.Poster}" alt="${movieDetails.Title}" />
+            <img src="${movieDetails.Poster}" alt="Poster of ${movieDetails.Title}" />
             <p><strong>Genre:</strong> ${movieDetails.Genre}</p>
             <p><strong>Director:</strong> ${movieDetails.Director}</p>
             <p><strong>Actors:</strong> ${movieDetails.Actors}</p>
@@ -158,7 +158,7 @@ const displayFavoriteMovies = () => {
         const card = document.createElement("div");
         card.classList.add("movie-card");
         card.innerHTML = `
-            <img src="${movie.poster}" alt="${movie.title}" />
+            <img src="${movie.poster}" alt="Poster of ${movie.title}" />
             <h3>${movie.title}</h3>
             <button class="remove-favorite-button" data-id="${movie.id}">Remove from Favorites</button>
         `;
