@@ -123,11 +123,12 @@ main {
     transform: translate(-50%, -50%);
     width: 90%; /* Adjust width to fit smaller screens */
     max-width: 350px; /* Slightly larger maximum width */
+    max-height: 90vh;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    overflow: hidden;
+    overflow: auto;
     padding: 20px; /* Slightly more padding */
     text-align: center; /* Center-align all content */
 }
@@ -146,12 +147,10 @@ main {
     line-height: 0;
 }
 
-#close-details:hover {
-    color: #c0392b; /* Darker red on hover */
-}
 
 /* Optional: Add a hover effect to make it feel clickable */
 #close-details:hover {
+    color: #c0392b; /* Darker red on hover */
     transform: scale(1.1); /* Slightly enlarge to indicate clickability */
 }
 
