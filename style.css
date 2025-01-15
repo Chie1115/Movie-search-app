@@ -265,6 +265,27 @@ main {
     gap: 1.5rem;
     justify-content: center;
 }
+nav {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    background-color: #f0f0f0;
+    color: #007BFF;
+}
+
 
 /* For iPhone 16: 1 column (for widths 767px or less) */
 @media (max-width: 767px) {
