@@ -207,10 +207,15 @@ elements.searchButton.addEventListener("click", async () => {
     query ? displayMovies(await fetchMovies(query)) : toggleError("Please enter a movie title.");
 });
 
-elements.genreButton.addEventListener("click", async () => {
+// elements.genreButton.addEventListener("click", async () => {
+//     const genre = elements.genreSelect.value;
+//     genre ? displayMovies(await fetchMoviesByGenre(genre)) : toggleError("Please select a genre.");
+// });
+
+elements.genreSelect.addEventListener("change", async () => {
     const genre = elements.genreSelect.value;
     genre ? displayMovies(await fetchMoviesByGenre(genre)) : toggleError("Please select a genre.");
-});
+})
 
 elements.closeDetailsButton.addEventListener("click", () => {
     elements.movieDetails.classList.add("hidden");
