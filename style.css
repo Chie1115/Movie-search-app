@@ -13,25 +13,48 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content at the top */
     min-height: 100vh;
     padding: 20px;
+    margin: 0; /* Remove margin to prevent page from having space at the top */
 }
+
 
 header {
     background-color: #d2958b; /* Terracotta shade */
     color: #ffffff;
     padding: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Distribute space between title and navigation */
+    align-items: center; /* Vertically align the items */
     width: 100%;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+    position: relative; /* Ensure it stays at the top */
 }
 
 header h1 {
     font-size: 2rem;
     font-weight: bold;
-}
+    margin: 0; /* Remove default margin */}
+
+    nav {
+        display: flex;
+        gap: 15px;
+    }
+    
+    nav a {
+        text-decoration: none;
+        color: #ffffff; /* White color for links */
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    nav a:hover, nav a.active {
+        background-color: #f0f0f0;
+        color: #007BFF;
+    }
 
 main {
     width: 100%;
