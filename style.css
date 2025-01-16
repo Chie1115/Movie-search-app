@@ -314,6 +314,8 @@ nav a:hover, nav a.active {
 @media (max-width: 767px) {
     #results-container {
         grid-template-columns: 1fr; /* 1 column */
+        justify-items: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
     }
 }
 
