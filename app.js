@@ -3,6 +3,7 @@ const apiKey = "ac5b9b92";
 const baseUrl = "https://www.omdbapi.com/";
 const MAX_RESULTS = 10;
 
+// DOM elements for interaction and display
 const elements = {
     errorMessage: document.getElementById("error-message"),
     errorText: document.getElementById("error-text"),
@@ -17,22 +18,22 @@ const elements = {
     favoritesList: document.getElementById("favorites-list")
 };
 
-// Cache to store fetched data
+// Cache to store fetched data and reduce API requests
 const cache = new Map();
 
-// Toggles the error message display
+// Toggles the visibility of error messages
 const toggleError = (message = '') => {
     elements.errorMessage.classList.toggle("hidden", !message);
     elements.errorText.textContent = message;
 };
 
-// Fetches data from the given URL and handles caching
+// Fetches data from the API with caching and error handling
 const fetchData = async (url) => {
     if (cache.has(url)) return cache.get(url); // Return cached data if available
     try {
         const response = await fetch(url);
         
-        // Check for HTTP status errors
+        // Handle HTTP status errors
         if (!response.ok) {
             switch (response.status) {
                 case 404:
@@ -207,10 +208,6 @@ elements.searchButton.addEventListener("click", async () => {
     query ? displayMovies(await fetchMovies(query)) : toggleError("Please enter a movie title.");
 });
 
-// elements.genreButton.addEventListener("click", async () => {
-//     const genre = elements.genreSelect.value;
-//     genre ? displayMovies(await fetchMoviesByGenre(genre)) : toggleError("Please select a genre.");
-// });
 
 elements.genreSelect.addEventListener("change", async () => {
     const genre = elements.genreSelect.value;

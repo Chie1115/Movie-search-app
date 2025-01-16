@@ -41,15 +41,15 @@ nav {
         text-decoration: none;
         color:  #4a4a4a; 
         font-weight: normal;
-        padding: 5px 10px; border: none; /* 枠線を消す */
-        background-color: transparent; /* 背景色を透明に */
+        padding: 5px 10px; border: none; /* Remove border */
+        background-color: transparent; /* Transparent background */
         transition: color 0.3s ease;
-        font-size: 1rem; /* フォントサイズを小さく */
+        font-size: 1rem; /* Smaller font size */
     }
     
     nav a:hover, nav a.active {
         color:  #007BFF;
-        background-color: transparent !important; /* 背景色を透明に */
+        background-color: transparent !important; /* Transparent background */
     }
 
 main {
@@ -308,23 +308,11 @@ nav a:hover, nav a.active {
 
 /* For iPhone 16: 1 column (for widths 767px or less) */
 @media (max-width: 767px) {
-    #results-container {
-        grid-template-columns: 1fr; /* 1 column */
-        justify-items: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
+    .movie-card {
+        width: 100%; /* Adjust cards to full width */
+        padding: 1rem;
     }
-}
-
-/* For iPad Pro 11: 3 columns (for widths between 768px and 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-    #results-container {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    }
-}
-
-/* For Desktop: 5 columns (for widths 1200px or more) */
-@media (min-width: 1200px) {
-    #results-container {
-        grid-template-columns: repeat(5, 1fr); /* 5 columns */
+    #results-container, #favorites-list {
+        grid-template-columns: 1fr; /* Use 1 column layout */
     }
 }
