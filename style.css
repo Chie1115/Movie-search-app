@@ -41,15 +41,15 @@ nav {
         text-decoration: none;
         color:  #4a4a4a; 
         font-weight: normal;
-        padding: 5px 10px; border: none; /* Remove border */
-        background-color: transparent; /* Transparent background */
+        padding: 5px 10px; border: none; 
+        background-color: transparent; 
         transition: color 0.3s ease;
-        font-size: 1rem; /* Smaller font size */
+        font-size: 1rem;
     }
     
     nav a:hover, nav a.active {
         color:  #007BFF;
-        background-color: transparent !important; /* Transparent background */
+        background-color: transparent !important; 
     }
 
 main {
@@ -308,11 +308,23 @@ nav a:hover, nav a.active {
 
 /* For iPhone 16: 1 column (for widths 767px or less) */
 @media (max-width: 767px) {
-    .movie-card {
-        width: 100%; /* Adjust cards to full width */
-        padding: 1rem;
+    #results-container {
+        grid-template-columns: 1fr; /* 1 column */
+        justify-items: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
     }
-    #results-container, #favorites-list {
-        grid-template-columns: 1fr; /* Use 1 column layout */
+}
+
+/* For iPad Pro 11: 3 columns (for widths between 768px and 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    #results-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    }
+}
+
+/* For Desktop: 5 columns (for widths 1200px or more) */
+@media (min-width: 1200px) {
+    #results-container {
+        grid-template-columns: repeat(5, 1fr); /* 5 columns */
     }
 }
